@@ -151,8 +151,9 @@ public class DefaultWxClient implements WxClient, ApiFieldHandler{
     @Override
     public <T extends WxApiResponse> T execute(WxApiRequest<T> request) throws IOException, RequestErrorException {
         String result = getWxPost().doPost(request.getRequestUrl(), getSignedRequestParamsAsXml(request).getBytes(), this.charset, this.connectTimeout, this.readTimeout);
+        // TODO handle fault response here
         if (!WxPaySignUtils.isMD5SignatureValid(result, this.appKey)) {
-            logger.error("===== get invalid info after requesting pay, system may be under attack!");
+            logger.error("===== get invalid info after requesting pay, system may be under attack! response:{}", result);
             throw new RequestErrorException("get invalid info after requesting pay, system may be under attack!");
         }
         return ApiFieldReader.readFromXml(request.getResponseClass(),result);
