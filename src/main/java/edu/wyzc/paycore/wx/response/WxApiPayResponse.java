@@ -5,7 +5,7 @@ import edu.wyzc.paycore.wx.mapping.ApiField;
 /**
  * Created by Allen on 2018/6/14.
  */
-public class WxPayResponse extends WxResponse {
+public class WxApiPayResponse extends WxApiResponse {
     @ApiField("return_code")
     private String returnCode;
     @ApiField("return_msg")
@@ -35,7 +35,7 @@ public class WxPayResponse extends WxResponse {
     @ApiField("mweb_url")
     private String mwebUrl;
 
-    public WxPayResponse() {
+    public WxApiPayResponse() {
     }
 
     public String getReturnCode() {

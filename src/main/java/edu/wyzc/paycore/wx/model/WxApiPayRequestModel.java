@@ -10,7 +10,7 @@ import java.util.UUID;
 /**
  * Created by Allen on 2018/6/14.
  */
-public class WxPayRequestModel extends WxRequestModel {
+public class WxApiPayRequestModel extends WxApiRequestModel {
     @ApiField("device_info")
     private String deviceInfo;
     @ApiField("nonce_str")
@@ -50,7 +50,7 @@ public class WxPayRequestModel extends WxRequestModel {
     @ApiField("scene_info")
     private String sceneInfo;
 
-    public WxPayRequestModel(String body, String outTradeNo, long totalFeeFen, String spbillCreateIp, Date timeStart, Date timeExpire, String notifyUrl, TradeType tradeType) {
+    public WxApiPayRequestModel(String body, String outTradeNo, long totalFeeFen, String spbillCreateIp, Date timeStart, Date timeExpire, String notifyUrl, TradeType tradeType) {
         nonceStr = UUID.randomUUID().toString().replace("-","");
         this.body = body;
         this.outTradeNo = outTradeNo;

@@ -3,19 +3,19 @@ package edu.wyzc.paycore.wx.request;
 import edu.wyzc.paycore.wx.ApiFieldWriter;
 import edu.wyzc.paycore.wx.constants.WxPayConstants;
 import edu.wyzc.paycore.wx.exceptions.InvalidWxRequestException;
-import edu.wyzc.paycore.wx.model.WxRequestModel;
-import edu.wyzc.paycore.wx.response.WxPayResponse;
+import edu.wyzc.paycore.wx.model.WxApiRequestModel;
+import edu.wyzc.paycore.wx.response.WxApiPayResponse;
 
 import java.util.Map;
 
 /**
  * Created by Allen on 2018/6/14.
  */
-public class WxPayRequest implements WxRequest<WxPayResponse> {
-    private WxRequestModel wxRequestModel;
+public class WxApiPayRequest implements WxApiRequest<WxApiPayResponse> {
+    private WxApiRequestModel wxRequestModel;
     private String requestUrl;
 
-    public WxPayRequest(WxRequestModel wxRequestModel) throws InvalidWxRequestException {
+    public WxApiPayRequest(WxApiRequestModel wxRequestModel) throws InvalidWxRequestException {
         requestUrl = WxPayConstants.URL_PAY_REQUEST;
         if (wxRequestModel == null) {
             throw new InvalidWxRequestException("Invalid wx request exception, wxRequestModel can't be null");
@@ -24,8 +24,8 @@ public class WxPayRequest implements WxRequest<WxPayResponse> {
     }
 
     @Override
-    public Class<WxPayResponse> getResponseClass() {
-        return WxPayResponse.class;
+    public Class<WxApiPayResponse> getResponseClass() {
+        return WxApiPayResponse.class;
     }
 
     @Override
@@ -39,12 +39,12 @@ public class WxPayRequest implements WxRequest<WxPayResponse> {
     }
 
     @Override
-    public WxRequestModel getRequestModel() {
+    public WxApiRequestModel getRequestModel() {
         return this.wxRequestModel;
     }
 
     @Override
-    public void setRequestModel(WxRequestModel model) {
+    public void setRequestModel(WxApiRequestModel model) {
         this.wxRequestModel = model;
     }
 

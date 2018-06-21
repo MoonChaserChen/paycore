@@ -7,8 +7,8 @@ import edu.wyzc.paycore.wx.constants.WxPayConstants;
 import edu.wyzc.paycore.wx.enums.SignType;
 import edu.wyzc.paycore.wx.exceptions.RequestErrorException;
 import edu.wyzc.paycore.wx.mapping.ApiField;
-import edu.wyzc.paycore.wx.request.WxRequest;
-import edu.wyzc.paycore.wx.response.WxResponse;
+import edu.wyzc.paycore.wx.request.WxApiRequest;
+import edu.wyzc.paycore.wx.response.WxApiResponse;
 import edu.wyzc.paycore.wx.utils.IWxPost;
 import edu.wyzc.paycore.wx.utils.WxPaySignUtils;
 import edu.wyzc.paycore.wx.utils.WxPost;
@@ -149,7 +149,7 @@ public class DefaultWxClient implements WxClient, ApiFieldHandler{
     }
 
     @Override
-    public <T extends WxResponse> T execute(WxRequest<T> request) throws IOException, RequestErrorException {
+    public <T extends WxApiResponse> T execute(WxApiRequest<T> request) throws IOException, RequestErrorException {
         String result = getWxPost().doPost(request.getRequestUrl(), getSignedRequestParamsAsXml(request).getBytes(), this.charset, this.connectTimeout, this.readTimeout);
         if (!WxPaySignUtils.isMD5SignatureValid(result, this.appKey)) {
             logger.error("===== get invalid info after requesting pay, system may be under attack!");
@@ -159,7 +159,7 @@ public class DefaultWxClient implements WxClient, ApiFieldHandler{
     }
 
     @Override
-    public String getSignedRequestParamsAsXml(WxRequest request) {
+    public String getSignedRequestParamsAsXml(WxApiRequest request) {
         Map<String, String> requestParam = request.getApiFieldsAsMap();
         requestParam.putAll(getApiFieldsAsMap());
         return WxPaySignUtils.generateSignedXml(requestParam, appKey, signType);

@@ -1,7 +1,7 @@
 package edu.wyzc.paycore;
 
 import edu.wyzc.paycore.wx.ApiFieldReader;
-import edu.wyzc.paycore.wx.response.WxPayResponse;
+import edu.wyzc.paycore.wx.response.WxApiPayResponse;
 import org.junit.Test;
 
 /**
@@ -21,7 +21,7 @@ public class XstreamTest {
                 "<trade_type><![CDATA[NATIVE]]></trade_type>\n" +
                 "<code_url><![CDATA[weixin://wxpay/bizpayurl?pr=WYHYEEE]]></code_url>\n" +
                 "</xml>";
-        WxPayResponse read = ApiFieldReader.readFromXml(WxPayResponse.class, xmlData);
+        WxApiPayResponse read = ApiFieldReader.readFromXml(WxApiPayResponse.class, xmlData);
         System.out.println("readFromXml = " + read);
     }
 }
