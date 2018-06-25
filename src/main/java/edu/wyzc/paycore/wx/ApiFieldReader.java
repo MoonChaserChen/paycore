@@ -12,6 +12,7 @@ import java.lang.reflect.Field;
 public class ApiFieldReader {
     public static <T> T readFromXml(Class<T> clazz, String xmlData){
         XStream xStream = new XStream();
+        xStream.registerConverter(new WxDateConverter());
         xStream.ignoreUnknownElements();
         xStream.alias(WxPayConstants.XML_TAG, clazz);
         Field[] declaredFields = clazz.getDeclaredFields();

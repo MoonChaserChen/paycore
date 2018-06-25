@@ -15,4 +15,11 @@ public class WxPayConstants {
     public static final String XML_TAG = "xml";
 
     public static final String URL_PAY_REQUEST = "https://api.mch.weixin.qq.com/pay/unifiedorder";
+    public static final String URL_PAY_ORDER_QUERY = "https://api.mch.weixin.qq.com/pay/orderquery";
+
+
+    public static final String NOTIFY_RETURN_CODE = "return_code";
+    public static final String NOTIFY_RETURN_MSG = "return_msg";
+    public static final String NOTIFY_RETURN_CODE_SUCCESS = "SUCCESS";
+    public static final String NOTIFY_RETURN_CODE_FAIL = "FAIL";
 }
