@@ -2,6 +2,8 @@ package edu.wyzc.paycore.wx.model;
 
 import edu.wyzc.paycore.wx.mapping.ApiField;
 
+import java.util.Date;
+
 /**
  * Created by Allen on 2018/6/25.
  */
@@ -54,7 +56,7 @@ public class WxApiPayNotifyModel {
     @ApiField(value="attach")
     private String attach;
     @ApiField(value="time_end")
-    private String timeEnd;
+    private Date timeEnd;
 
     public String getReturnCode() {
         return returnCode;
@@ -240,11 +242,11 @@ public class WxApiPayNotifyModel {
         this.attach = attach;
     }
 
-    public String getTimeEnd() {
+    public Date getTimeEnd() {
         return timeEnd;
     }
 
-    public void setTimeEnd(String timeEnd) {
+    public void setTimeEnd(Date timeEnd) {
         this.timeEnd = timeEnd;
     }
 }

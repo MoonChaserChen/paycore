@@ -149,8 +149,13 @@ public class DefaultWxClient implements WxClient, ApiFieldHandler{
     }
 
     @Override
-    public <T extends WxApiResponse> T execute(WxApiRequest<T> request) throws IOException, RequestErrorException {
-        String result = getWxPost().doPost(request.getRequestUrl(), getSignedRequestParamsAsXml(request).getBytes(), this.charset, this.connectTimeout, this.readTimeout);
+    public <T extends WxApiResponse> T execute(WxApiRequest<T> request) throws RequestErrorException {
+        String result;
+        try {
+            result = getWxPost().doPost(request.getRequestUrl(), getSignedRequestParamsAsXml(request).getBytes(), this.charset, this.connectTimeout, this.readTimeout);
+        } catch (IOException e) {
+            throw new RequestErrorException("request failed due to http io exception",e);
+        }
         T response = ApiFieldReader.readFromXml(request.getResponseClass(), result);
         String returnCode = response.getReturnCode();
         // handle fault response here

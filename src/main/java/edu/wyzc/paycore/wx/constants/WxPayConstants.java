@@ -22,4 +22,8 @@ public class WxPayConstants {
     public static final String NOTIFY_RETURN_MSG = "return_msg";
     public static final String NOTIFY_RETURN_CODE_SUCCESS = "SUCCESS";
     public static final String NOTIFY_RETURN_CODE_FAIL = "FAIL";
+
+    public static final String ERROR_CODE_ORDERNOTEXIST = "ORDERNOTEXIST";
+
+    public static final String NOTIFY_HANDLED_RETURN = "<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>";
 }
