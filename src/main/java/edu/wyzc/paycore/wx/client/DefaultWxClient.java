@@ -163,8 +163,8 @@ public class DefaultWxClient implements WxClient, ApiFieldHandler{
             throw new RequestErrorException(response.getReturnMsg());
         }
         if (!WxPaySignUtils.isMD5SignatureValid(result, this.appKey)) {
-            logger.error("===== get invalid info after requesting pay, system may be under attack! response:{}", result);
-            throw new RequestErrorException("get invalid info after requesting pay, system may be under attack!");
+            logger.error("===== get invalid info after request, system may be under attack! response:{}", result);
+            throw new RequestErrorException("get invalid info after request, system may be under attack!");
         }
         return response;
     }

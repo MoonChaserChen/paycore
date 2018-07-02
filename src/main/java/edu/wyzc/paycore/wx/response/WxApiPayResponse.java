@@ -1,5 +1,6 @@
 package edu.wyzc.paycore.wx.response;
 
+import edu.wyzc.paycore.wx.enums.TradeType;
 import edu.wyzc.paycore.wx.mapping.ApiField;
 
 /**
@@ -148,5 +149,18 @@ public class WxApiPayResponse extends WxApiResponse {
 
     public void setMwebUrl(String mwebUrl) {
         this.mwebUrl = mwebUrl;
+    }
+
+    public String getPayRequestCoreInfo() {
+        if (tradeType == null) {
+            return null;
+        }else if (tradeType.equalsIgnoreCase(TradeType.APP.toString())) {
+            return this.prepayId;
+        }else if (tradeType.equalsIgnoreCase(TradeType.MWEB.toString())) {
+            return this.mwebUrl;
+        }else if (tradeType.equalsIgnoreCase(TradeType.NATIVE.toString())) {
+            return this.codeUrl;
+        }
+       return null;
     }
 }
