@@ -149,7 +149,7 @@ payRequestCoreInfo使用方式：
 
 * 支付下单
 ```java
-    WxApiPayRequestModel model = new WxApiPayRequestModel("商品名称", "商户订单号","总金额：单位分", "支付IP", "创建时间", "超时时间", "支付结果异步通知地址", "支付类型“);
+    WxApiPayRequestModel model = new WxApiPayRequestModel("商品名称", "商户订单号","总金额：单位分", "支付IP", "创建时间", "超时时间", "支付结果异步通知地址", "支付类型");
     WxApiPayRequest request = new WxApiPayRequest(model);
     String payRequestCoreInfo = wxClient.execute(request).getPayRequestCoreInfo();
 ```
