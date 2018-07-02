@@ -1,4 +1,4 @@
-##paycore说明文档
+## paycore说明文档
 
 #### 系统介绍
 
@@ -31,22 +31,22 @@
 
 * before
 ```java
-AlipayClient alipayClient = new DefaultAlipayClient("serverUrl", "appId", "privateKey","format","charset","alipayPublicKey", "signType","proxyHost", "proxyPort");
+    AlipayClient alipayClient = new DefaultAlipayClient("serverUrl", "appId", "privateKey","format","charset","alipayPublicKey", "signType","proxyHost", "proxyPort");
 ```
 
 * H5下单
 ```java
-AlipayTradeWapPayModel model = new AlipayTradeWapPayModel();
-model.setTimeoutExpress("超时时间表达式");
-model.setSubject("商品说明");
-model.setOutTradeNo("商户订单号");
-model.setTotalAmount("金额，单位元，格式12.56");
-model.setProductCode("产品码，");
-AlipayTradeWapPayRequest request = new AlipayTradeWapPayRequest();
-request.setBizModel(model);
-request.setReturnUrl("支付完成后跳转页面");
-request.setNotifyUrl("支付结果异步通知地址");
-String payRequestCoreInfo = alipayClient.pageExecute(request).getBody();
+    AlipayTradeWapPayModel model = new AlipayTradeWapPayModel();
+    model.setTimeoutExpress("超时时间表达式");
+    model.setSubject("商品说明");
+    model.setOutTradeNo("商户订单号");
+    model.setTotalAmount("金额，单位元，格式12.56");
+    model.setProductCode("产品码，");
+    AlipayTradeWapPayRequest request = new AlipayTradeWapPayRequest();
+    request.setBizModel(model);
+    request.setReturnUrl("支付完成后跳转页面");
+    request.setNotifyUrl("支付结果异步通知地址");
+    String payRequestCoreInfo = alipayClient.pageExecute(request).getBody();
 ```
 payRequestCoreInfo示例值：
 ```
@@ -58,30 +58,30 @@ payRequestCoreInfo示例值：
 ```
 payRequestCoreInfo使用方式：
 ```java
-@RequestMapping(value="/alipayH5Pay")
-public void alipayPcPay (HttpServletResponse response) {
-    // 1. payRequestCoreInfo
-    String payRequestCoreInfo = "...";
-    // 2. get pay request info and request to pay
-    response.setContentType("text/html;charset=utf-8");
-    response.getWriter().write(payRequestCoreInfo);
-    response.getWriter().flush();
-    response.getWriter().close();
-}
+    @RequestMapping(value="/alipayH5Pay")
+    public void alipayPcPay (HttpServletResponse response) {
+        // 1. payRequestCoreInfo
+        String payRequestCoreInfo = "...";
+        // 2. get pay request info and request to pay
+        response.setContentType("text/html;charset=utf-8");
+        response.getWriter().write(payRequestCoreInfo);
+        response.getWriter().flush();
+        response.getWriter().close();
+    }
 ```
 
 * APP下单
 ``` java
-AlipayTradeAppPayModel model = new AlipayTradeAppPayModel();
-model.setTimeoutExpress("超时时间表达式");
-model.setSubject("商品名称");
-model.setOutTradeNo("商户订单号");
-model.setTotalAmount("金额，单位元，格式12.56");
-model.setProductCode("产品码，");
-AlipayTradeAppPayRequest request = new AlipayTradeAppPayRequest();
-request.setBizModel(model);
-request.setNotifyUrl("支付结果异步通知地址");
-String payRequestCoreInfo = alipayClient.sdkExecute(request).getBody();
+    AlipayTradeAppPayModel model = new AlipayTradeAppPayModel();
+    model.setTimeoutExpress("超时时间表达式");
+    model.setSubject("商品名称");
+    model.setOutTradeNo("商户订单号");
+    model.setTotalAmount("金额，单位元，格式12.56");
+    model.setProductCode("产品码，");
+    AlipayTradeAppPayRequest request = new AlipayTradeAppPayRequest();
+    request.setBizModel(model);
+    request.setNotifyUrl("支付结果异步通知地址");
+    String payRequestCoreInfo = alipayClient.sdkExecute(request).getBody();
 ```
 payRequestCoreInfo示例值：
 ```
@@ -95,17 +95,17 @@ IOS见： https://docs.open.alipay.com/204/105295/
 
 * PC下单
 ```java
-AlipayTradePagePayModel model = new AlipayTradePagePayModel();
-model.setTimeoutExpress("超时时间表达式");
-model.setSubject("商品说明");
-model.setOutTradeNo("商户订单号");
-model.setTotalAmount("金额，单位元，格式12.56");
-model.setProductCode("产品码，");
-AlipayTradePagePayRequest request = new AlipayTradePagePayRequest();
-request.setBizModel(model);
-request.setReturnUrl("支付完成后跳转页面");
-request.setNotifyUrl("支付结果异步通知地址");
-String payRequestCoreInfo = alipayClient.pageExecute(request).getBody();
+    AlipayTradePagePayModel model = new AlipayTradePagePayModel();
+    model.setTimeoutExpress("超时时间表达式");
+    model.setSubject("商品说明");
+    model.setOutTradeNo("商户订单号");
+    model.setTotalAmount("金额，单位元，格式12.56");
+    model.setProductCode("产品码，");
+    AlipayTradePagePayRequest request = new AlipayTradePagePayRequest();
+    request.setBizModel(model);
+    request.setReturnUrl("支付完成后跳转页面");
+    request.setNotifyUrl("支付结果异步通知地址");
+    String payRequestCoreInfo = alipayClient.pageExecute(request).getBody();
 ```
 payRequestCoreInfo示例值：
 ```
@@ -117,25 +117,25 @@ payRequestCoreInfo示例值：
 ```
 payRequestCoreInfo使用方式：
 ```java
-@RequestMapping(value="/alipayPcPay")
-public void alipayPcPay (HttpServletResponse response) {
-    // 1. payRequestCoreInfo
-    String payRequestCoreInfo = "...";
-    // 2. get pay request info and request to pay
-    response.setContentType("text/html;charset=utf-8");
-    response.getWriter().write(payRequestCoreInfo);
-    response.getWriter().flush();
-    response.getWriter().close();
-}
+    @RequestMapping(value="/alipayPcPay")
+    public void alipayPcPay (HttpServletResponse response) {
+        // 1. payRequestCoreInfo
+        String payRequestCoreInfo = "...";
+        // 2. get pay request info and request to pay
+        response.setContentType("text/html;charset=utf-8");
+        response.getWriter().write(payRequestCoreInfo);
+        response.getWriter().flush();
+        response.getWriter().close();
+    }
 ```
 
 * 订单状态查询
 ```java
-AlipayTradeQueryModel model = new AlipayTradeQueryModel();
-model.setOutTradeNo("商户订单号");
-AlipayTradeQueryRequest request = new AlipayTradeQueryRequest();
-request.setBizModel(model);
-AlipayTradeQueryResponse response = alipayClient.execute(request);
+    AlipayTradeQueryModel model = new AlipayTradeQueryModel();
+    model.setOutTradeNo("商户订单号");
+    AlipayTradeQueryRequest request = new AlipayTradeQueryRequest();
+    request.setBizModel(model);
+    AlipayTradeQueryResponse response = alipayClient.execute(request);
 ```
 > 更多见支付宝官方文档
 
@@ -144,14 +144,14 @@ AlipayTradeQueryResponse response = alipayClient.execute(request);
 
 * before
 ```java
-WxClient wcClient = DefaultWxClient("mchId","appId","key",byte[] certData,SignType.MD5,"proxyHost","proxyPort");
+    WxClient wcClient = DefaultWxClient("mchId","appId","key",byte[] certData,SignType.MD5,"proxyHost","proxyPort");
 ```
 
 * 支付下单
 ```java
-WxApiPayRequestModel model = new WxApiPayRequestModel("商品名称", "商户订单号","总金额：单位分", "支付IP", "创建时间", "超时时间", "支付结果异步通知地址", "支付类型“);
-WxApiPayRequest request = new WxApiPayRequest(model);
-String payRequestCoreInfo = wxClient.execute(request).getPayRequestCoreInfo();
+    WxApiPayRequestModel model = new WxApiPayRequestModel("商品名称", "商户订单号","总金额：单位分", "支付IP", "创建时间", "超时时间", "支付结果异步通知地址", "支付类型“);
+    WxApiPayRequest request = new WxApiPayRequest(model);
+    String payRequestCoreInfo = wxClient.execute(request).getPayRequestCoreInfo();
 ```
 payRequestCoreInfo返回值
 
