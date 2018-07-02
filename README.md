@@ -161,4 +161,10 @@ payRequestCoreInfo返回值
 |  APP   |wx02122819197115adec27a4351641484737|这是prepayId，需要重新签名供APP使用，见：https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_5   |
 |   PC   |weixin://wxpay/bizpayurl?pr=igUlb14| 做成二维码供网页上扫描 |
 
-
+* 订单状态查询
+```java
+	WxApiOrderQueryModel model = new WxApiOrderQueryModel(String.valueOf(outTradeNo));
+    WxApiOrderQueryRequest request = new WxApiOrderQueryRequest(model);
+    WxApiOrderQueryResponse response = wxClient.execute(request);
+```
+> 更多API待扩展
