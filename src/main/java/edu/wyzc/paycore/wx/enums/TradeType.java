@@ -29,7 +29,7 @@ public enum TradeType {
         this.desc = desc;
     }
 
-    public static TradeType getByOutPayWay(String ourPayWay) {
+    public static TradeType getByOurPayWay(String ourPayWay) {
         for (TradeType tradeType : TradeType.values()) {
             if (tradeType.getOurPayWay().equals(ourPayWay)) {
                 return tradeType;
