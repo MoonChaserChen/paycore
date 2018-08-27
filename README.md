@@ -2,21 +2,7 @@
 
 #### 系统介绍
 
-	1. paycore用于支付宝、微信提交支付、订单查询、申请退款相关API的封装
-	2. 此系统包含了支付宝、微信官方提供的API；并且针对于微信提供了自定义的API（因为觉得微信官方的API写得并不好）
-	3. 支付宝官方API
-        <dependency>
-            <groupId>com.alipay.sdk</groupId>
-            <artifactId>alipay-sdk-java</artifactId>
-            <version>3.0.1</version>
-        </dependency>
-	4. 微信官方API
-		<dependency>
-            <groupId>com.github.wxpay</groupId>
-            <artifactId>wxpay-sdk</artifactId>
-            <version>0.0.3</version>
-        </dependency>
-	5. 下面将会介绍支付宝官方API、自定义微信API
+	paycore用于支付宝、微信提交支付、订单查询、申请退款相关API的封装
 
 #### maven依赖介绍
 
@@ -29,7 +15,7 @@
 
 #### 支付宝API使用说明
 
-* before
+* 初始化
 ```java
     AlipayClient alipayClient = new DefaultAlipayClient("serverUrl", "appId", "privateKey","format","charset","alipayPublicKey", "signType","proxyHost", "proxyPort");
 ```
@@ -142,7 +128,7 @@ payRequestCoreInfo使用方式：
 
 #### 微信API使用说明
 
-* before
+* 初始化
 ```java
     WxClient wcClient = DefaultWxClient("mchId","appId","key",byte[] certData,SignType.MD5,"proxyHost","proxyPort");
 ```
